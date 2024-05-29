@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(../style/roboto\ .woff2) format('woff2');
+    }
+  }
+
+  @layer components {
+    .hoverBorder{
+      @apply border-[1px]  duration-300  hover:border-[white] p-1  border-transparent;
+    }
+  }
+
+
+@layer components{
+  .textHover{
+    @apply text-[#0066C0] hover:text-[#EAB652] hover:underline duration-300
+  }
+}
+
+
