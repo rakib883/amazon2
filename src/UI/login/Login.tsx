@@ -61,7 +61,7 @@ const Login = () => {
                     </div>
                     <div className="cursor-pointer">
                         <p className="text-[12px]">
-                           By continuing, you agree to Amazon's <span className="textHover">Conditions of Use</span> and <span className="textHover">Privacy Notice.</span>
+                           {/* By continuing, you agree to Amazon s <span className="textHover">Conditions of Use</span> and <span className="textHover">Privacy Notice.</span> */}
                         </p>
                     </div>
                     <div onClick={loginForget} className="botttom-arrow hover:text-[#D77D00] duration-300 hover:underline flex items-center text-[13px] mt-3 cursor-pointer" >
