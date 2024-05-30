@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../style/globals.css"
 import 'react-toastify/dist/ReactToastify.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Layout from "@/UI/layout";
+import Layout from "@/UI/Layout";
 
 
 
