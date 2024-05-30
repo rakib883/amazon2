@@ -8,11 +8,14 @@ import PriceFormat from '@/UI/PriceFormat';
 import { useEffect, useState } from 'react';
 import { MdLogout } from "react-icons/md";
 
-
+export interface amajon{
+  state:string,
+ 
+}
 
 function Page() {
 
-  const gettingData = useSelector((state) => state.addCart?.addCart) || []; // Ensure it's an array
+  const gettingData = useSelector((state:amajon) => state.addCart?.addCart); // Ensure it's an array
 
   const deleteProduct = useDispatch()
   const cardClearDispatch = useDispatch()
@@ -25,7 +28,7 @@ function Page() {
   // calculet area end
   
     useEffect(()=>{
-        let total = 0
+        let total = 0;
 
         gettingData.map((item:any)=>{
           total += item.quentity * item.price
