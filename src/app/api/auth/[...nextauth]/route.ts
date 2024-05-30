@@ -4,6 +4,10 @@ import GitHubProvider from "next-auth/providers/github";
 import clientPromise from "@/lib/db";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 
+
+export interface Amajson {
+  authOptions: AuthOptions;
+}
 const authOptions = {
   providers: [
     GoogleProvider({
