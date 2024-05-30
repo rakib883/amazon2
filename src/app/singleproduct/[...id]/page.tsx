@@ -14,6 +14,7 @@ interface Product {
   image: string;
   price: number;
   previousPrice: number;
+  
 }
 
 function Page({ searchParams }: { searchParams: any }) {
@@ -83,7 +84,7 @@ function Page({ searchParams }: { searchParams: any }) {
                   <PriceFormat className="font-semibold text-3xl" prize={getdata?.price} />
                 </div>
                 <div className="old mt-4 font-semibold">
-                  <del><PriceFormat prize={getdata?.previousPrice} /></del>
+                  <del><PriceFormat className="" prize={getdata?.previousPrice} /></del>
                 </div>
               </div>
               {/* Price area end */}
