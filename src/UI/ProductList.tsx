@@ -119,7 +119,7 @@ function ProductList({ product }: any) {
                  })) && toast.success(`${item?.title} add to cart succesfully` ) }
                 className="bg-[green] hover:bg-black hover:text-white duration-300 cursor-pointer font-MainFont w-[100px] my-2 text-center py-2 rounded-sm text-white">
                   <p>Add to cart</p>
-                  <ToastContainer />
+                  <ToastContainer autoClose={100} />
                 </div>
               </div>
             </div>

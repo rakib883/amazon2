@@ -71,50 +71,90 @@ function Page() {
   };
 
   return (
-    <div className="grid ">
-      {gettingData.length > 0 ?
-        <table className="border-collapse border md:mx-[80px] my-8 border-slate-400 text-center ">
-          <thead className="bg-[gray]">
-            <tr>
-              <th className="">Name</th>
-              <th>Price</th>
-              <th>Quentity</th>
-              <th>Total</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {gettingData.map((item) => (
-              <tr className="text-center" key={item.id}>
-                <td className="">
-                  <div className="image flex gap-4 items-center">
-                    <Image className="mx-4 my-2" src={item?.image} alt="img" width={50} height={50} />
-                    <p>{item?.title}</p>
-                  </div>
-                  <div className="title"></div>
-                </td>
-                <td><PriceFormat className="hidden" prize={item?.price} /></td>
-                <td className="inline-flex gap-4 items-center justify-center border-[1px] border-[white] text-center">
-                  <div onClick={() => dispatch(increment({ id: item?.id }))} className="increment text-[24px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">+</div>
-                  <div className="decrement text-[15px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">{item?.quentity}</div>
-                  <div onClick={() => dispatch(decrement({ id: item?.id }))} className="decrement text-[24px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">-</div>
-                </td>
-                <td>
-                  <PriceFormat className="" prize={item?.price * item?.quentity} />
-                </td>
-                <td className="inline-block my-8 text-center cursor-pointer">
-                  <FaXmark onClick={() => dispatch(productDelete(item?.id))} className="text-center text-[25px] hover:rotate-180" />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table> :
-        <div className="no my-10">
-          <div className="tex">
-            <p className="font-MainFont font-bold text-xl text-center">No Item selected</p>
-          </div>
-        </div>
-      }
+    <div className="">
+        <div className="hidden md:block">
+          <div className="grid ">
+            {gettingData.length > 0 ?
+              <table className="border-collapse border md:mx-[80px] my-8 border-slate-400 text-center">
+                <thead className="bg-[gray] w-full">
+                  <tr className="w-full">
+                    <th className="">Name</th>
+                    <th className="">Price</th>
+                    <th className="">Quentity</th>
+                    <th className="">Total</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+                <tbody className="">
+                  {gettingData.map((item:any) => (
+                    <tr className="text-center" key={item.id}>
+                      <td className="">
+                        <div className="image flex  md:gap-4 items-center">
+                          <Image className="mx-4 my-2" src={item?.image} alt="img" width={50} height={50} />
+                          <p className="text-base">{item?.title}</p>
+                        </div>
+                        <div className="title"></div>
+                      </td>
+                      <td><PriceFormat className="" prize={item?.price} /></td>
+                      <td className="inline-flex gap-4 items-center justify-center border-[1px] border-[white] text-center">
+                        <div onClick={() => dispatch(increment({ id: item?.id }))} className="increment text-[24px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">+</div>
+                        <div className="decrement text-[15px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">{item?.quentity}</div>
+                        <div onClick={() => dispatch(decrement({ id: item?.id }))} className="decrement text-[24px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">-</div>
+                      </td>
+                      <td>
+                        <PriceFormat className="" prize={item?.price * item?.quentity} />
+                      </td>
+                      <td className="inline-block my-8 text-center cursor-pointer">
+                        <FaXmark onClick={() => dispatch(productDelete(item?.id))} className="text-center text-[25px] hover:rotate-180" />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table> :
+              <div className="no my-10">
+                <div className="tex">
+                  <p className="font-MainFont font-bold text-xl text-center">No Item selected</p>
+                </div>
+              </div>
+            }
+          </div> 
+        </div>  
+     {/* mobile jcart area start */}
+        <div className="mobile md:hidden">
+            {/* mobile menu title start */}
+          {gettingData.length > 0 ?  
+            <div className="title">
+               <h1 className="font-mainFont text-[24px] my-2 font-bold text-center">Your cart</h1>
+               <div className="main">
+                  {
+                    gettingData.map((item:any)=>
+                       <div key={item.id} className="all">
+                          <div className="image-area my-1 flex justify-between items-center mx-2 cursor-pointer ">
+                             <div className="image flex gap-2 items-center">
+                                <div className="image">
+                                   <Image src={item?.image} width={50} height={50} alt="img"/>
+                                </div>
+                                <div className="title">
+                                  <p>{item?.title}</p>
+                                </div>
+                             </div>
+                             <div className="prize flex items-center gap-2">
+                                 <PriceFormat className="" prize={item?.price} />
+                                 <div className="inline-block my-8 text-center cursor-pointer">
+                                    <FaXmark onClick={() => dispatch(productDelete(item?.id))} className="text-center text-[25px] hover:rotate-180" />
+                                 </div>
+                             </div>
+                          </div>
+                       </div>
+                    
+                    )}
+               </div>
+             </div> :  "" 
+            }
+            {/* mobile menu title-end */}
+         </div>
+      {/* mobile cart area en */}
+        
       <div className="">
         {gettingData.length > 0 ?
           <div className="all md:flex md:mx-[80px]">
@@ -138,6 +178,7 @@ function Page() {
                 <p>Bangladesh</p>
               </div>
               {/* Country area end */}
+
               {/* Total area start */}
               <div className="flex justify-between text-xl font-semibold items-center font-MainFont">
                 <p>Total</p>
