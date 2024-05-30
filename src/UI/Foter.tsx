@@ -49,7 +49,7 @@ function Foter() {
                     <FoterHeader className="" title="Get to know us"  />
                     <div className="">
                        {
-                          getUs.map(({ id, title }) => (
+                          getUs.map(({ id, title }:any) => (
                             <div className="text-[#DDDDDD] font-mainFont my-2 hover:underline duration-300 cursor-pointer" key={id}>{title}</div>
                         ))
                        }
@@ -79,7 +79,7 @@ function Foter() {
                  </div>
                  <div className="text">
                    {
-                       makeMoney.map((item)=>
+                       makeMoney.map((item:any)=>
                         <div key={item.id} className="main">
                             <p className="text-[#DDDDDD] font-mainFont my-2 hover:underline duration-300 cursor-pointer">{item.title}</p>
                         </div>
@@ -95,7 +95,7 @@ function Foter() {
                  </div>
                  <div className="">
                    {
-                     letUs.map((item)=>
+                     letUs.map((item:any)=>
                        <div key={item.id} className="main">
                           <p className="text-[#DDDDDD] font-mainFont my-2 hover:underline duration-300 cursor-pointer">{item.title}</p>
                        </div>

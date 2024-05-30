@@ -70,8 +70,8 @@ function ProductList({ product }: any) {
                 <Image
                   className="rounded-md"
                   src={item?.image}
-                  width={1}
-                  height={1}
+                  width={500}
+                  height={500}
                   layout=''
                   alt="image"
                 />

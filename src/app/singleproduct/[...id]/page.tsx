@@ -34,7 +34,7 @@ function Page({searchParams}:{searchParams : any}) {
     }
     return getData
     setLoading(false)
- },[])
+ },[_id])
 
 
  console.log(getdata)

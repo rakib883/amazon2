@@ -15,11 +15,11 @@ const Slider = () => {
                    
                 </div>
                 <div>
-                <Image src={slider2} alt="slider" />
+                <Image src={slider2} alt="slider" height={200} width={300}  />
                   
                 </div>
                 <div>
-                <Image src={slider3} alt="slider" />
+                <Image src={slider3} alt="slider" height={200} width={300}  />
                 </div>
             </Carousel>
             <div className=" absolute bottom-4 pb-[200px] w-full bg-gradient-to-t from-gray-200 to-transparent">

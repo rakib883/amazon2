@@ -64,7 +64,7 @@ function Header() {
      
    ]
  
-    const product = useSelector((item)=>item.addCart?.addCart)
+    const product = useSelector((item:any)=>item.addCart?.addCart)
     return (
 
          <div className="all-container sticky top-0 z-50">
@@ -232,7 +232,7 @@ function Header() {
                                        <h1 className="font-MainFont font-semibold text-[#484948] text-[16px]">Your List</h1>
                                         <div className="link-Item">
                                           {
-                                             accountLink.map((item)=>
+                                             accountLink.map((item:any)=>                                      
                                                 <div key={item.id}>
                                                      <Link  href="/" className="text-[13px] text-[#444444]  hover:text-[#F0B379] duration-300 hover:underline">{item.name}</Link>
                                                 </div>
@@ -246,7 +246,7 @@ function Header() {
                                        <div className="">
                                        <h1 className="font-MainFont font-semibold text-[#484948] text-[16px]">Your </h1>
                                        {
-                                             accountsLink.map((item)=>
+                                             accountsLink.map((item:any)=>
                                                 <div key={item.id}>
                                                      <Link  href="/" className="text-[13px] text-[#444444]  hover:text-[#F0B379] duration-300 hover:underline">{item.name}</Link>
                                                 </div>
