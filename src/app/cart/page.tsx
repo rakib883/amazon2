@@ -8,14 +8,11 @@ import PriceFormat from '@/UI/PriceFormat';
 import { useEffect, useState } from 'react';
 import { MdLogout } from "react-icons/md";
 
-export interface amajon{
-  state:string,
- 
-}
+
 
 function Page() {
 
-  const gettingData = useSelector((state:amajon) => state.addCart?.addCart); // Ensure it's an array
+  const gettingData = useSelector((state:any) => state.addCart?.addCart); // Ensure it's an array
 
   const deleteProduct = useDispatch()
   const cardClearDispatch = useDispatch()
