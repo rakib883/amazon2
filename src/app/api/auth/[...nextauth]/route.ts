@@ -5,9 +5,7 @@ import clientPromise from "@/lib/db";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { Adapter } from "next-auth/adapters"; // Ensure this import matches your NextAuth version
 
-export interface Amajson {
-  authOptions: AuthOptions;
-}
+
 
 const authOptions: AuthOptions = {
   providers: [
