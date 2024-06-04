@@ -12,6 +12,12 @@ import { addProduct } from '@/Redux/amazoneSlice';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+interface listType{
+  aos:any;
+}
+
+
+
 function ProductList({ product }: any) {
   const [gridProduct, setGridProduct] = useState(0);
 
