@@ -6,6 +6,8 @@ import { FaRegStar } from "react-icons/fa";
 import PriceFormat from '@/UI/PriceFormat';
 import { GoDash } from "react-icons/go";
 import { FaPlus } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { decrement, increment } from '@/Redux/amazoneSlice';
 
 interface Product {
   _id: string;
@@ -14,6 +16,7 @@ interface Product {
   image: string;
   price: number;
   previousPrice: number;
+  quentity:number;
   
 }
 
@@ -28,7 +31,8 @@ function Page({ searchParams }: { searchParams: any }) {
   const [loading, setLoading] = useState(true);
   const [getdata, setGetdata] = useState<Product | null>(null);
   const { _id } = searchParams;
-
+  const incrementDispatch = useDispatch();
+  const decrementDispatch = useDispatch()
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
@@ -42,9 +46,11 @@ function Page({ searchParams }: { searchParams: any }) {
       setLoading(false);
     };
 
-    getData();
+    getData(getdata);
   }, [_id]);
-
+   
+    const singledata = useSelector((state)=>state);
+   console.log(singledata)
   return (
     <div className="py-8 mx-8">
       {
@@ -90,14 +96,32 @@ function Page({ searchParams }: { searchParams: any }) {
               {/* Price area end */}
               {/* Increment/Decrement area start */}
               <div className="increment flex items-center gap-8 overflow-hidden mt-4 border-[1px] border-black max-w-[170px] justify-center">
-                <div className="increment bg-[#F3A847] p-4 cursor-pointer"><FaPlus className="text-md cursor-pointer font-bold" /></div>
-                <div className="prize text-md cursor-pointer font-bold">0</div>
-                <div className="decrement bg-[#F3A847] p-4 cursor-pointer"><GoDash className="text-md font-bold" /></div>
+                <div
+                   onClick={()=>incrementDispatch(increment({
+                     id:getdata?._id,
+                     title:getdata?.title,
+                     price:getdata?.price,
+                     quentity:getdata?.quentity,
+                   }))}
+                  className="increment bg-[#F3A847] p-4 cursor-pointer">
+                   <FaPlus className="text-md cursor-pointer font-bold" />
+                </div>
+                <div className="prize text-md cursor-pointer font-bold">00</div>
+                <div 
+                  onClick={()=>decrementDispatch(decrement({
+                    id:getdata?._id,
+                    title:getdata?.title,
+                    price:getdata?.price,
+                    quentity:getdata?.quentity,
+                  }))}
+                className="decrement bg-[#F3A847] p-4 cursor-pointer">
+                  <GoDash className="text-md font-bold" />
+                </div>
               </div>
               {/* Increment/Decrement area end */}
               {/* Add to bag area start */}
               <div className="increment cursor-pointer flex items-center gap-8 overflow-hidden bg-[#F3A847] py-2 mt-4 border-[1px] border-black max-w-[170px] justify-center">
-                Add to bag
+                Buy now
               </div>
               {/* Add to bag end */}
             </div>

@@ -96,7 +96,7 @@ function Page() {
                         <div className="title"></div>
                       </td>
                       <td><PriceFormat className="" prize={item?.price} /></td>
-                      <td className="inline-flex gap-4 items-center justify-center border-[1px] border-[white] text-center">
+                      <td className="inline-flex gap-4 items-center max-w-[200px] justify-center border-[1px] border-[white] text-center">
                         <div onClick={() => dispatch(increment({ id: item?.id }))} className="increment text-[24px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">+</div>
                         <div className="decrement text-[15px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">{item?.quentity}</div>
                         <div onClick={() => dispatch(decrement({ id: item?.id }))} className="decrement text-[24px] font-mainFont hover:bg-[green] hover:text-[white] duration-300 px-2 cursor-pointer bg-gray/10">-</div>
@@ -110,6 +110,11 @@ function Page() {
                     </tr>
                   ))}
                 </tbody>
+                <div
+                 onClick={resetHandler}
+                className="reset cursor-pointer hover:bg-[#F3A847] bg-[red] max-w-[150px] font-mainFont py-2 m-4 text-[white]">
+                  Reset
+                </div>
               </table> :
               <div className="no my-10">
                 <div className="tex">

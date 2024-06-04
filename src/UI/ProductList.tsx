@@ -1,7 +1,7 @@
 "use client"
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaRegStar } from "react-icons/fa";
 import FormattedPrice from './PrizeCurrency';
 import { MdGridOn, MdTableRows } from "react-icons/md";
@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import { addProduct } from '@/Redux/amazoneSlice';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function ProductList({ product }: any) {
   const [gridProduct, setGridProduct] = useState(0);
@@ -16,6 +18,10 @@ function ProductList({ product }: any) {
   const gridSystem = (index: number) => {
     setGridProduct(index);
   };
+   
+   useEffect(()=>{
+      AOS.init({duration: "2500"});
+   },)
 
   // dispatch area staer
    const cartDispatch = useDispatch()
@@ -23,7 +29,7 @@ function ProductList({ product }: any) {
 
   return (
     <div>
-      <div className="cols-ch py-2 cursor-pointer">
+      <div className="cols-ch py-2 cursor-pointer mt-[-160px]">
         <div className="main bg-white rounded-md flex justify-between py-2">
           <div className="rows flex gap-4 mx-2">
             <div
@@ -51,12 +57,12 @@ function ProductList({ product }: any) {
         }`}
       >
         {product.map((item: any) => (
-          <div
+          <div data-aos="zoom-in"
             key={item?._id}
             className={`${
               gridProduct === 0
                 ? "main grid items-center cursor-pointer md:grid-cols-5 bg-[white] gap-10"
-                : "border-[1px] rounded-md border-black"
+                : "border-[1px] rounded-md border-black overflow-hidden"
             }`}
           >
             <Link
@@ -83,7 +89,7 @@ function ProductList({ product }: any) {
               </div>
             </Link>
             <div className={`${gridProduct === 0 ? "all-text md:col-span-4 " : "mx-2"}`}>
-              <div className="title">
+              <div className="title mx-4 md:mx-0">
                 <p className="font-semibold text-lg font-MainFont">{item?.title}</p>
                 <p className="font-semibold text-md first-letter:uppercase font-MainFont">
                   Category: {item?.category}
@@ -117,7 +123,7 @@ function ProductList({ product }: any) {
                        price :item?.price,
                        quentity:1
                  })) && toast.success(`${item?.title} add to cart succesfully` ) }
-                className="bg-[green] hover:bg-black hover:text-white duration-300 cursor-pointer font-MainFont w-[100px] my-2 text-center py-2 rounded-sm text-white">
+                className="bg-[green] w-full md:block hover:bg-black  hover:text-white duration-300 cursor-pointer font-MainFont w-[100px] my-2 text-center py-2 rounded-sm text-white">
                   <p>Add to cart</p>
                   <ToastContainer autoClose={100} />
                 </div>

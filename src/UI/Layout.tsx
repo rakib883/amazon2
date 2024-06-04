@@ -2,12 +2,14 @@
 import { SessionProvider } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 
-import Header from './Header/Header';
+
 import SubHeader from './Header/SubHeader';
 import Foter from './Foter';
 import { usePathname } from "next/navigation";
 import { Provider } from 'react-redux';
 import { store } from '@/Redux/store';
+import Header from './Header/Header';
+
 
 const Layout = ({children}:any) => {
     // login page render start
