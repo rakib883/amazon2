@@ -3,12 +3,12 @@ import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import clientPromise from "@/lib/db";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import { Adapter } from "next-auth/adapters"; // Ensure this import matches your NextAuth version
+import { Adapter } from "next-auth/adapters";
 
-interface authTytpe{
-  AuthOptions : AuthOptions;
+// Define an interface that uses the existing AuthOptions type
+interface authType {
+  options: AuthOptions;
 }
-
 
 const authOptions: AuthOptions = {
   providers: [
