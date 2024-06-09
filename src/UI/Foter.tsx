@@ -41,9 +41,9 @@ function Foter() {
     
   return (
     <div className="bg-[#232F3E] mt-4">
-        <div className="">
+        <div className="mx-6">
             <div className="foter-header"></div>
-           <div className="content max-w-6xl mx-auto grid mx-4 md:grid-cols-4 grid-cols-2 justify-between py-10">
+           <div className="content max-w-6xl  grid mx-4 md:grid-cols-4 grid-cols-2 justify-between py-10">
                <div className="first-area">
                  <div className="fot">
                     <FoterHeader className="" title="Get to know us"  />

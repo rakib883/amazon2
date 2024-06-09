@@ -22,9 +22,7 @@ function Header() {
 
   // Log user info if available
   
-  // abefore login action home page start
-
-    // abefore login action home page end
+ 
 
   return (
     <div className="bg-[#131921] py-4 sticky top-0 z-50">

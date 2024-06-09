@@ -6,7 +6,7 @@ import { FaRegStar } from "react-icons/fa";
 import PriceFormat from '@/UI/PriceFormat';
 import { GoDash } from "react-icons/go";
 import { FaPlus } from "react-icons/fa";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch,  } from 'react-redux';
 import { addProduct, decrement, increment } from '@/Redux/amazoneSlice';
 
 interface Product {
@@ -16,7 +16,7 @@ interface Product {
   image: string;
   price: number;
   previousPrice: number;
-  quentity:number;
+  quantity:number;
   
 }
 
@@ -49,12 +49,11 @@ function Page({ searchParams }: { searchParams: any }) {
     getData(getdata);
   }, [_id]);
    
-  const singledata = useSelector((state)=>state);
 
   // dara send to redux start
   const addRedux = useDispatch()
   // data send redux end
-  
+  console.log(getdata?.image)
   return (
     <div className="py-8 mx-8">
       {
@@ -114,9 +113,10 @@ function Page({ searchParams }: { searchParams: any }) {
                 <div 
                   onClick={()=>decrementDispatch(decrement({
                     id:getdata?._id,
+                    image:getdata?.image,
                     title:getdata?.title,
                     price:getdata?.price,
-                    quentity:getdata?.quentity,
+                    quantity:getdata?.quantity,
                   }))}
                 className="decrement bg-[#F3A847] p-4 cursor-pointer">
                   <GoDash className="text-md font-bold" />
@@ -126,7 +126,11 @@ function Page({ searchParams }: { searchParams: any }) {
               {/* Add to bag area start */}
               <div onClick={()=>addRedux(addProduct(
                 {
-                  id:getdata?._id,
+                       id : getdata._id, 
+                       image : getdata?.image,
+                       title:getdata?.title,
+                       price :getdata?.price,
+                       quentity:1
                 }
               ))} className="increment cursor-pointer flex items-center gap-8 overflow-hidden hover:bg-orange-400 duration-300 bg-[#F3A847] py-2 mt-4 border-[1px] border-black max-w-[170px] justify-center">
                 Add to cart
