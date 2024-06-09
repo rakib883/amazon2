@@ -7,7 +7,7 @@ import PriceFormat from '@/UI/PriceFormat';
 import { GoDash } from "react-icons/go";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment } from '@/Redux/amazoneSlice';
+import { addProduct, decrement, increment } from '@/Redux/amazoneSlice';
 
 interface Product {
   _id: string;
@@ -49,8 +49,12 @@ function Page({ searchParams }: { searchParams: any }) {
     getData(getdata);
   }, [_id]);
    
-    const singledata = useSelector((state)=>state);
-   console.log(singledata)
+  const singledata = useSelector((state)=>state);
+
+  // dara send to redux start
+  const addRedux = useDispatch()
+  // data send redux end
+  
   return (
     <div className="py-8 mx-8">
       {
@@ -120,8 +124,12 @@ function Page({ searchParams }: { searchParams: any }) {
               </div>
               {/* Increment/Decrement area end */}
               {/* Add to bag area start */}
-              <div className="increment cursor-pointer flex items-center gap-8 overflow-hidden bg-[#F3A847] py-2 mt-4 border-[1px] border-black max-w-[170px] justify-center">
-                Buy now
+              <div onClick={()=>addRedux(addProduct(
+                {
+                  id:getdata?._id,
+                }
+              ))} className="increment cursor-pointer flex items-center gap-8 overflow-hidden hover:bg-orange-400 duration-300 bg-[#F3A847] py-2 mt-4 border-[1px] border-black max-w-[170px] justify-center">
+                Add to cart
               </div>
               {/* Add to bag end */}
             </div>

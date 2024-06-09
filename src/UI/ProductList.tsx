@@ -129,15 +129,15 @@ function ProductList({ product }: any) {
                        price :item?.price,
                        quentity:1
                  })) && toast.success(`${item?.title} add to cart succesfully` ) }
-                className="bg-[green] w-full md:block hover:bg-black  hover:text-white duration-300 cursor-pointer font-MainFont w-[100px] my-2 text-center py-2 rounded-sm text-white">
+                className="bg-[green] w-full md:block hover:bg-black  hover:text-white duration-300 cursor-pointer font-MainFont  my-2 text-center py-2 rounded-sm text-white">
                   <p>Add to cart</p>
-                  <ToastContainer autoClose={100} />
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <ToastContainer autoClose={100} />
     </div>
   );
 }

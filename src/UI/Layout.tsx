@@ -11,6 +11,7 @@ import { store } from '@/Redux/store';
 import Header from './Header/Header';
 
 
+
 const Layout = ({children}:any) => {
     // login page render start
     const pathname = usePathname()

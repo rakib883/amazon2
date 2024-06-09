@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body className=" font-MainFont bg-[#E3E6E6]">
-            <Layout>{children} </Layout>
+             <Layout>{children} </Layout>
         </body>
     </html>
   );

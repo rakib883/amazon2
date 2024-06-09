@@ -1,28 +1,18 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import nextAuth from "next-auth";
+import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
-import GitHubProvider from "next-auth/providers/github";
-import clientPromise from "@/lib/db";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import { Adapter } from "next-auth/adapters";
 
-// Define an interface that uses the existing AuthOptions type
-interface authType {
-  options: AuthOptions;
-}
-
-const authOptions: AuthOptions = {
+export const authOptions = {
+  // Configure one or more authentication providers
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_SECRET!,
     }),
-    GitHubProvider({
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,
-    }),
+    // ...add more providers here
   ],
-  adapter: MongoDBAdapter(clientPromise) as Adapter,
-};
+}
 
-const handler = NextAuth(authOptions);
+const handler = nextAuth(authOptions);
+
 export { handler as GET, handler as POST };

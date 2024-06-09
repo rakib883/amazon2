@@ -6,20 +6,14 @@ import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from 'react';
-
-import { useRouter } from 'next/navigation';
+import { FaGoogle } from "react-icons/fa";
 import Loader from '../loader/Loader';
+import { useDispatch } from 'react-redux';
+import {  loginUser } from '@/Redux/amazoneSlice';
+import { useRouter } from 'next/navigation';
+
 
 const Register = () => {
-    const { data: session } = useSession();
-    const router = useRouter();
-
-    useEffect(() => {
-        if (session?.user) {
-            router.push("/");
-        }
-    }, [session?.user, router]);
-
     const [loginLoader, setLoginLoader] = useState(false);
     const [userData, setUserData] = useState({
         useName: "",
@@ -61,7 +55,23 @@ const Register = () => {
             }
         }
     };
+  const {data : session} = useSession()
+  const userInfo = session?.user
+  const dispatchUser = useDispatch()
+  
+  useEffect(()=>{
+    dispatchUser(loginUser(userInfo))
+  },[session?.user])
 
+// abefore login action home page start
+ const router = useRouter()
+ useEffect(()=>{
+    if(session?.user){
+       router.push("/")
+    }
+ },[session?.user,router])
+// abefore login action home page end
+  
     return (
         <div>
             {loginLoader ? (
@@ -70,9 +80,9 @@ const Register = () => {
                 </div>
             ) : (
                 <div className="all-content max-w-sm mx-auto">
-                    <div className="logo-area flex justify-center mt-4">
+                    <Link href="/" className="logo-area flex justify-center mt-4 cursor-pointer">
                         <Image src={register} alt="register" height={100} width={90} />
-                    </div>
+                    </Link>
                     <div className="content-area border-[1px] border-[#DDDDDD] p-4 mt-4">
                         <h1 className="text-[24px]">Create Account</h1>
                         <div className="all-input-filed">
@@ -115,8 +125,13 @@ const Register = () => {
                             <p>You have an account? </p>
                             <Link href="/login" className="hover:text-[#EFC04D] duration-300 ml-1">Sign in</Link>
                         </div>
-                        <div onClick={() => signIn()} className="login-google cursor-pointer">
-                            <button>Sign in with Google</button>
+                           <div className="social flex justify-center gap-4">
+                                <div onClick={() => signIn()} className="login-google cursor-pointer">
+                                    <button><FaGoogle className="text-2xl" /></button>
+                                </div>
+                            <div onClick={() => signIn()} className="login-google cursor-pointer">
+                                 {/* <button><FaGithub className="text-2xl"  /></button>  */}
+                            </div>
                         </div>
                     </div>
                 </div>

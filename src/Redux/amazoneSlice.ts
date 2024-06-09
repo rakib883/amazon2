@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export interface CounterState {
     addCart: any[];
+    userInfo :any;
 }
 
 const initialState: CounterState = {
-   addCart: []
+   addCart: [],
+    userInfo :null
 };
 
 export const amazone = createSlice({
@@ -40,11 +42,15 @@ export const amazone = createSlice({
         }else{
             decrement.quentity --
         }
+     },
+
+     loginUser :(state,action)=>{
+         state.userInfo = action.payload
      }
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addProduct, productDelete, clearProductCart,increment,decrement } = amazone.actions;
+export const { addProduct, productDelete, clearProductCart,increment,decrement,loginUser } = amazone.actions;
 
 export default amazone.reducer;

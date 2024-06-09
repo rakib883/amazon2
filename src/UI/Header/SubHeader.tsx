@@ -24,8 +24,8 @@ const SubHeader = () => {
     ]
     return (
         <div className="bg-[#232F3E]">
-            <div onClick={navbarHandeler} className="all-items text-white flex gap-4  mx-4">
-                <div className="icon-area flex items-center cursor-pointer gap-1 text-md">
+            <div  className="all-items text-white flex gap-4  mx-4">
+                <div onClick={navbarHandeler} className="icon-area flex items-center cursor-pointer gap-1 text-md">
                   <span className="text-2xl"><HiBars3 /> </span> <span className="text-sm font-bold font-MainFont">All</span>
                 </div>
                 <div className="flex gap-3 ">
