@@ -8,6 +8,9 @@ import { GoDash } from "react-icons/go";
 import { FaPlus } from "react-icons/fa";
 import { useDispatch,  } from 'react-redux';
 import { addProduct, decrement, increment } from '@/Redux/amazoneSlice';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+import InnerImageZoom from 'react-inner-image-zoom';
+
 
 interface Product {
   _id: string;
@@ -17,6 +20,7 @@ interface Product {
   price: number;
   previousPrice: number;
   quantity:number;
+  zoomSrc:string;
   
 }
 
@@ -73,7 +77,19 @@ function Page({ searchParams }: { searchParams: any }) {
           getdata &&
           <div className="main gap-4 grid md:grid-cols-5">
             <div className="image-area w-full h-[500px] md:col-span-2 relative">
-              <Image src={getdata?.image} fill={true} alt="image" />
+                <InnerImageZoom 
+                    src={getdata?.image}  
+                    zoomSrc={getdata?.image} 
+                    zoomType="hover"
+                    zoomPreload={true}
+                 />
+              {/* <Image 
+                  src={getdata?.image} 
+                  fill={true} alt="image" 
+                  zoomSrc="https://your-image-source.com/image-large.jpg" 
+                  zoomType="hover"
+                  zoomPreload={true}
+                /> */}
             </div>
             <div className="text-area w-full md:col-span-3 ">
               <p className="text-[24px] font-mainFont">{getdata?.title}</p>
@@ -109,7 +125,7 @@ function Page({ searchParams }: { searchParams: any }) {
                   className="increment bg-[#F3A847] p-4 cursor-pointer">
                    <FaPlus className="text-md cursor-pointer font-bold" />
                 </div>
-                <div className="prize text-md cursor-pointer font-bold">00</div>
+                <div className="prize text-md cursor-pointer font-bold">{getdata?.quantity}</div>
                 <div 
                   onClick={()=>decrementDispatch(decrement({
                     id:getdata?._id,

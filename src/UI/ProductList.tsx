@@ -94,7 +94,7 @@ function ProductList({ product }: any) {
                 </div>
               </div>
             </Link>
-            <div className={`${gridProduct === 0 ? "all-text md:col-span-4 " : "mx-2"}`}>
+            <div className={`${gridProduct === 0 ? "all-text  md:col-span-4 " : "mx-2"}`}>
               <div className="title mx-4 md:mx-0">
                 <p className="font-semibold text-lg font-MainFont">{item?.title}</p>
                 <p className="font-semibold text-md first-letter:uppercase font-MainFont">
