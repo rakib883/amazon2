@@ -12,17 +12,19 @@ import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import InnerImageZoom from 'react-inner-image-zoom';
 
 
-interface Product {
+interface Product{
   _id: string;
   title: string;
   description: string;
   image: string;
   price: number;
   previousPrice: number;
-  quantity:number;
+  quentity:number;
   zoomSrc:string;
   
 }
+
+
 
 function Page({ searchParams }: { searchParams: any }) {
   // Review area start
@@ -37,20 +39,27 @@ function Page({ searchParams }: { searchParams: any }) {
   const { _id } = searchParams;
   const incrementDispatch = useDispatch();
   const decrementDispatch = useDispatch()
+  
   useEffect(() => {
-    const getData = async () => {
-      setLoading(true);
-      const response = await fetch(`https://jsonserver.reactbd.com/amazonpro/${_id}`);
-
-      if (!response.ok) {
-        throw new Error("data fetching problem");
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`https://jsonserver.reactbd.com/amazonpro/${_id}`);
+  
+        if (!response.ok) {
+          throw new Error("Data fetching problem");
+        }
+  
+        const data = await response.json();
+        setGetdata(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
       }
-
-      setGetdata(await response.json());
-      setLoading(false);
     };
-
-    getData(getdata);
+  
+    fetchData();
   }, [_id]);
    
 
