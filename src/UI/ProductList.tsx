@@ -26,7 +26,7 @@ function ProductList({ product }: any) {
   };
    
    useEffect(()=>{
-      AOS.init({duration: "2500"});
+      AOS.init({duration: 2500});
    },)
 
   // dispatch area staer
