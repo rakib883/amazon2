@@ -67,6 +67,7 @@ function Header() {
                   <div className="profile-text">
                      <p className="text-[12px]">{getUSer?.name}</p>
                      <p className="text-[12px]">{getUSer?.email}</p>
+                     <p>Hello</p>
                   </div>
               </div>
             ) : (
