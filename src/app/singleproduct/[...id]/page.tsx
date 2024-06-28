@@ -39,7 +39,7 @@ function Page({ searchParams }: { searchParams: any }) {
   const { _id } = searchParams;
   const incrementDispatch = useDispatch();
   const decrementDispatch = useDispatch()
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -134,14 +134,14 @@ function Page({ searchParams }: { searchParams: any }) {
                   className="increment bg-[#F3A847] p-4 cursor-pointer">
                    <FaPlus className="text-md cursor-pointer font-bold" />
                 </div>
-                <div className="prize text-md cursor-pointer font-bold">{getdata?.quantity}</div>
+                <div className="prize text-md cursor-pointer font-bold">2</div>
                 <div 
                   onClick={()=>decrementDispatch(decrement({
                     id:getdata?._id,
                     image:getdata?.image,
                     title:getdata?.title,
                     price:getdata?.price,
-                    quantity:getdata?.quantity,
+                    
                   }))}
                 className="decrement bg-[#F3A847] p-4 cursor-pointer">
                   <GoDash className="text-md font-bold" />
