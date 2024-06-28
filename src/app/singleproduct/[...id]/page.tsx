@@ -83,13 +83,13 @@ function Page({ searchParams }: { searchParams: any }) {
                     zoomType="hover"
                     zoomPreload={true}
                  />
-              {/* <Image 
-                  src={getdata?.image} 
+               {/* <Image 
+                  src={getdata?.image } 
                   fill={true} alt="image" 
                   zoomSrc="https://your-image-source.com/image-large.jpg" 
                   zoomType="hover"
                   zoomPreload={true}
-                /> */}
+                />  */}
             </div>
             <div className="text-area w-full md:col-span-3 ">
               <p className="text-[24px] font-mainFont">{getdata?.title}</p>
